@@ -1,0 +1,135 @@
+[colors]
+background = #2e3440
+background-alt = #444
+foreground = #eceff4
+foreground-alt = #777
+primary = #81a1c1
+secondary = #8fbcbb
+alert = #bf616a
+
+[bar/topbar]
+width = 100%
+height = 28
+radius = 8
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+padding-left = 1
+padding-right = 2
+
+module-margin-right = 3
+
+font-0 = "Roboto Mono:style=Regular:size=10;2"
+font-1 = "Font Awesome 6 Pro:style=Regular:size=11;2"
+font-2 = "Font Awesome 6 Pro:style=Solid:size=11;2"
+font-3 = "Font Awesome 6 Duotone:style=Solid:size=11;2"
+font-4 = "Roboto:style=Bold:size=12;2"
+
+modules-left = i3
+modules-center = date email
+modules-right = aur filesystem alsa memory cpu wlan eth battery-combined-udev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+enable-ipc=true
+
+
+
+[module/aur]
+type = custom/script
+exec = ~/.config/polybar/yay-packages.sh
+interval = 600
+
+[module/email]
+type = custom/script
+tail = true
+exec = ~/.config/polybar/email-counter.sh
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = "%{F#64db29}%{T3}%{T-} %{F-}%percentage_used%%"
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; focused = Active workspace on focused monitor
+label-focused = "%{T3}%{T-} "
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = " "
+
+; urgent = Workspace with urgency hint set
+label-urgent = "%{T3}%{T-} "
+label-urgent-foreground = ${colors.alert}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "%{T3}%{T-}"
+format-prefix-foreground = ${colors.secondary}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "%{T3}%{T-} "
+format-prefix-foreground = #bf616a
+label = %percentage_used%%
+
+[module/wlan]
+type = custom/script
+exec = ~/.config/polybar/wifi-connected.sh
+tail = true
+click-left = kill -s USR1 %pid%
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = #55aa55
+label-connected = %local_ip%
+
+[module/date]
+type = internal/date
+interval = 5
+
+date-alt = "%d %b %y"
+
+time = "%H:%M"
+time-alt = %H:%M
+
+label = %{T5}%date% %time%%{T-}
+
+[module/battery-combined-udev]
+type = custom/script
+exec = ~/.config/polybar/battery-combined-udev.sh
+tail = true
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
