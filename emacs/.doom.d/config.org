@@ -167,6 +167,31 @@ Start lsp in .vue buffers and remove script padding
                                                 (update-dashboard)))))
   #+end_src
 
+** Dired
+- Add mode for hiding dotfiles
+  #+begin_src emacs-lisp
+(define-minor-mode dired-hide-dotfiles-mode
+  "Toggle dired-hide-dotfiles-mode"
+  :init-value nil
+  :group 'dired
+  (if dired-hide-dotfiles-mode
+      (progn
+        (add-hook 'dired-after-readin-hook 'dired-hide-dotfiles)
+        (dired-hide-dotfiles))
+    (remove-hook 'dired-after-readin-hook 'dired-hide-dotfiles)
+    (revert-buffer)))
+
+(defun dired-hide-dotfiles ()
+  "Hide all files in a dired buffer"
+  (dired-mark-files-regexp "^\\.")
+  (dired-do-kill-lines nil ""))
+
+(map!
+ :map 'dired-mode-map
+ :localleader
+ :desc "Toggle hiding dotfiles" "j" 'dired-hide-dotfiles-mode)
+(dired-hide-dotfiles-mode t)
+  #+end_src
 * Keybinds
 - SPC SPC~ to open M-x, SPC b b~ to open buffer switcher, SPC TAB~ to switch to last buffer
   #+begin_src elisp
