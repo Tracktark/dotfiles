@@ -28,7 +28,7 @@ export PICO_SDK_PATH="/home/moss/projects/pico/pico-sdk"
 export GOPATH="$HOME/go"
 export ANDROID_HOME="/opt/android-sdk"
 
-dbus-update-activation-environment --systemd --all
+dbus-update-activation-environment --systemd --all >/dev/null 2>&1 
 
 # BW session key gen
 alias bw="bw_session"
