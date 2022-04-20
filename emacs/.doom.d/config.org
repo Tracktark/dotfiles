@@ -19,7 +19,7 @@
   #+end_src
 - Set font
   #+begin_src elisp
-(setq doom-font (font-spec :family "Roboto Mono" :size 13))
+(setq doom-font (font-spec :family "JetBrainsMono" :size 13 :weight 'semi-bold))
   #+end_src
 - Set theme
   #+begin_src elisp
@@ -192,6 +192,12 @@ Start lsp in .vue buffers and remove script padding
  :desc "Toggle hiding dotfiles" "j" 'dired-hide-dotfiles-mode)
 (dired-hide-dotfiles-mode t)
   #+end_src
+** Ligatures
+- Enable only in org mode and lisp mode
+  #+begin_src elisp
+(setq +ligatures-extras-in-modes '(org-mode emacs-lisp-mode))
+  #+end_src
+
 * Keybinds
 - SPC SPC~ to open M-x, SPC b b~ to open buffer switcher, SPC TAB~ to switch to last buffer
   #+begin_src elisp
