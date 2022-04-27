@@ -90,3 +90,10 @@ if [[ "$INSIDE_EMACS" == 'vterm' ]]; then
     [ -z "$TMUX" ] && exec tmux
     true
 fi
+
+if cat /proc/version | grep "WSL" >/dev/null; then # If in WSL
+    if ! pgrep dropbox >/dev/null; then
+        dropbox >/dev/null 2>&1 &
+        echo "Started Dropbox"
+    fi
+fi
