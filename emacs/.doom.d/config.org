@@ -127,9 +127,6 @@ Create 3 contexts, one for personal emails, one for work, and one for school. Co
 (after! vterm (setq vterm-eval-cmds (append vterm-eval-cmds '(("man" man)))))
   #+end_src
 ** Volar
-#+begin_src elisp
-(use-package! lsp-volar)
-#+end_src
 Start lsp in .vue buffers and remove script padding
 #+begin_src elisp
 (add-hook! web-mode

@@ -49,5 +49,4 @@
 ;(unpin! t)
 
 (package! all-the-icons)
-(package! lsp-volar :recipe (:host github :repo "jadestrong/lsp-volar"))
 (package! dashboard)
