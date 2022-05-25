@@ -3,3 +3,5 @@
 	email = rikoczz@gmail.com
 [init]
 	defaultBranch = main
+[core]
+	autocrlf = true
