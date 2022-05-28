@@ -130,7 +130,7 @@ Create 3 contexts, one for personal emails, one for work, and one for school. Co
 Start lsp in .vue buffers and remove script padding
 #+begin_src elisp
 (add-hook! web-mode
-           (when (string-match-p "\.vue$" buffer-file-name)
+           (when (equal "vue" (file-name-extension buffer-file-name))
              (lsp)
              (set (make-local-variable 'web-mode-script-padding) 0)))
 #+end_src
