@@ -1,0 +1,9 @@
+input_device: /dev/input/by-path/platform-yoga-event
+
+modes:
+  laptop:
+    #- pkill onboard
+    - pkill cellwriter
+  tablet:
+    #- onboard &
+    - cellwriter --hide-window &

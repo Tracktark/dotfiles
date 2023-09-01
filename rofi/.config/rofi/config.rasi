@@ -1,0 +1,21 @@
+configuration {
+	modi: "run,combi,ssh";
+	location: 0;
+	show-icons: true;
+	terminal: "alacritty";
+	icon-theme: "Oranchelo";
+	drun-display-format: "{icon} {name}";
+	disable-history: false;
+	sidebar-mode: true;
+	combi-modi: "window,drun";
+	window-format: "{t}";
+	display-window: " 󰕰 ";
+	display-run: "   Command ";
+	display-ssh: " 󰆍  ssh ";
+	display-drun: " 󰀘";
+	display-combi: " 󰀘  Apps ";
+    font: "Roboto 14";
+}
+
+@theme "catppuccin-macchiato"
+

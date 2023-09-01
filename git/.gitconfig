@@ -1,7 +1,0 @@
-[user]
-	name = Tracktark
-	email = rikoczz@gmail.com
-[init]
-	defaultBranch = main
-[core]
-	autocrlf = true
